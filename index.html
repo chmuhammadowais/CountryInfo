@@ -1,39 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="script.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
+      rel="stylesheet"
+    />
+    <title>CountryInfo</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="style.css" />
-  <script defer src="script.js"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet" />
-  <title>CountryInfo</title>
-</head>
-
-<body>
-
-  <h1>CountryInfo</h1>
-  <div class="container" id="container">
-    <div class="flag_container">
-      <div class="name">
-        <h3>Sample Country</h3>
-      </div>
-      <div class="flag">
-        <img src="" alt="Flag" />
-      </div>
-    </div>
-    <div class="info_container">
-      <p><span class="sub">Currency: </span>Unknown</p>
-      <p><span class="sub">Population: </span>00</p>
-      <p><span class="sub">Area (km²): </span>00</p>
-      <p><span class="sub">Languages: </span>Unknown</p>
-    </div>
-  </div>
-  <span class="loader" id="loader"></span>
-  <button type="button" class="find" id="find">Find Me</button>
-
-</body>
-
+  <body>
+    <h1>CountryInfo</h1>
+    <div class="container" id="container"></div>
+    <span class="loader" id="loader"></span>
+    <button type="button" class="find" id="find">Find Me</button>
+  </body>
 </html>
