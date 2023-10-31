@@ -5,7 +5,7 @@ const neighbors = document.getElementById("neighbors"); //Reference to neighbors
 const loader = document.getElementById("loader"); // Reference to the loader element
 const loading = document.getElementById("loading"); //Reference to loading text for loader
 const neighbors_heading = document.getElementById("neighbors_heading"); //Reference to neighbour heading
-
+const errMsg = document.getElementById("errMsg"); //Reference to thr error message
 find.addEventListener("click", function () {
   //button eventlistener to get the data
   loader.style.display = "block"; // Display the loader before making the geolocation request
@@ -14,8 +14,8 @@ find.addEventListener("click", function () {
     .then((res) => renderCountry(res)) //passing the data to renderCountry to be displayed on the page
     .catch((err) => {
       //racing the findMe and racePromise for timeout
-      const html = `<h3 class="errMsg" id="errMsg"> ${err} | Request took too long. | Please wait until loading finishes.</h3>`; //error message display upon an error or timeout
-      find.insertAdjacentHTML("beforebegin", html); //adding the error message to the page
+      const html = `${err} | Request took too long. | Please wait until loading finishes.`; //error message display upon an error or timeout
+      errMsg.insertAdjacentText("afterbegin", html); //adding the error message to the page
       console.log(err);
     });
 });
@@ -42,6 +42,7 @@ const getCountry = async function () {
   const data = await response.json();
   loader.style.display = "none"; // Hide the loader when the request is successful
   loading.style.display = "none"; // Hide the loading text when the request is successful
+  errMsg.style.display = "none" //Hiding the error message
   return data.address.country;
 };
 const findMe = async function () {
@@ -49,7 +50,7 @@ const findMe = async function () {
   return new Promise(async (resolve, reject) => {
     try {
       const country = await getCountry(); //calling the getCountry function to get the country to pass to API for details
-      const data = await fetch(`https://restcountries.com/v3.1/name/pakistan`); //API call for getting the country's data
+      const data = await fetch(`https://restcountries.com/v3.1/name/${country}`); //API call for getting the country's data
       const dataJSON = await data.json(); //resolving the recieved data to JSON format
       resolve(dataJSON[0]); //resolving with the data
     } catch (err) {
